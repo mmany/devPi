@@ -1,5 +1,13 @@
 #include <strapdown.h>
 
+/*
+To implement :
+Change code to do the calculations from timestamps on arrival or from sensor time or both
+Users sends a message on startup :
+    1/ for calculation based on sensor time
+    2/ for calculation based on timestamp
+    3/ for calculation based on sensor time and timestamp (more processing time)
+*/
 IMUdata IMU;
 STRAPdata STRAP;
 GPSdata GPS;

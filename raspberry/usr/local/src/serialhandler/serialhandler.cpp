@@ -1,6 +1,11 @@
 #include <serialhandler.h>
 
 
+/* TO DO :
+ - CHECK PACKAGE SIZE OF DIFFERENT DATA
+ - CHECK IF TIMESTAMP IS STORED WELL AND IF IT IS USEABLE BY STRADOWN PROCESS
+ */
+
 // creates data structs for incoming data
 IMUdata IMU;
 GPSdata GPS;
@@ -113,6 +118,10 @@ bool imudata(void){
     imustartmatch = ""; //reset startmatch string
     endbool = false; //end of data stream
 
+
+    tdiff = std::chrono::high_resolution_clock::now()-tRAS; // type is double
+    Daten += to_string(tdiff.count()); //adding arrival timestamp to the data
+
     while (!endbool) {
       Daten += IMUser.read(1); // read one byte
       if (Daten[Daten.size()-2] == 'e' && Daten[Daten.size()-1] == '/') { // check if last two read bytes match end of stream indicator "e/"
@@ -222,6 +231,10 @@ bool nanodata(void){ // see IMU parse functions for explenation
     nanostartmatch = "";
     endbool = false;
 
+
+    tdiff = std::chrono::high_resolution_clock::now()-tRAS;
+    Daten += to_string(tdiff.count()); //adding arrival timestamp to the data
+
     while (!endbool) {
       Daten += NANOser.read(1);
       if (Daten[Daten.size()-2] == 'e' && Daten[Daten.size()-1] == '/') {
@@ -313,6 +326,9 @@ bool adpdata(void){ // see IMU parse functions for explenation
   if (adpstartmatch[0] == 'b') {
     adpstartmatch = "";
     endbool = false;
+
+    tdiff = std::chrono::high_resolution_clock::now()-tRAS;
+    Daten += to_string(tdiff.count()); //adding arrival timestamp to the data
 
     while (!endbool) {
       Daten += ADPser.read(1);
@@ -406,6 +422,9 @@ bool thrdata(void){ // see IMU parse functions for explenation
   if (thrstartmatch[0] == 'b') {
     thrstartmatch = "";
     endbool = false;
+
+    tdiff = std::chrono::high_resolution_clock::now()-tRAS;
+    Daten += to_string(tdiff.count()); //adding arrival timestamp to the data
 
     while (!endbool) {
       Daten += THRser.read(1);
@@ -1243,6 +1262,7 @@ void syncGPS(void) {
 void sync(void){
   cout << "sync begin" << endl;
   double measurementtimeshift;
+  tRAS = std::chrono::high_resolution_clock::now(); // time reference for time stamping
   syncIMU();
   cout << "IMU synced" << endl;
   syncNANO();

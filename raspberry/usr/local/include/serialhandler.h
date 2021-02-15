@@ -188,6 +188,7 @@ high_resolution_clock::time_point tNANO;
 high_resolution_clock::time_point tADP;
 high_resolution_clock::time_point tTHR;
 high_resolution_clock::time_point tGPS;
+high_resolution_clock::time_point tRAS;
 std::chrono::duration<double, std::milli> tdiff; //time duration to relate the timepoints relative to another
 
 bool processbool = true; //main loop
