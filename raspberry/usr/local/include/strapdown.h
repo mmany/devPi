@@ -45,15 +45,15 @@ using namespace std;
 #define INFO_LOG "/home/pi/instrumentation_logs/INFO_LOG.txt"
 
 typedef struct IMUdata{
-  unsigned long IMUtime;
   unsigned long IMUtimestamp; // local raspberry timestamp
+  unsigned long IMUtime;
   float variables[6];
 };
 
 typedef struct STRAPdata{
+  unsigned long STRAPtimestamp; // local raspberry timestamp
   unsigned long IMUtime;
   unsigned long IMUtime_old;
-  unsigned long STRAPtimestamp; // local raspberry timestamp
   float roll;
   float pitch;
   float yaw;

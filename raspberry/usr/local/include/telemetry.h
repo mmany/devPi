@@ -106,9 +106,9 @@ typedef struct IMUdata{
 };
 
 typedef struct STRAPdata{
+  unsigned long STRAPtimestamp; // added timestamp on arrival
   unsigned long IMUtime;
   unsigned long IMUtime_old;
-  unsigned long STRAPtimestamp; // added timestamp on arrival
   float roll;
   float pitch;
   float yaw;
@@ -168,23 +168,23 @@ typedef struct GPSdata{ // see ublox NAV-PVT message, for data explenation
 
 #define NANO_PPM_CHANNELS 13
 typedef struct NANOdata{
-  unsigned long NANOtime;
   unsigned long NANOtimestamp; // added local timestamp
+  unsigned long NANOtime;
   float vdot;
   float vges;
   short int channelvalue[NANO_PPM_CHANNELS];
 };
 
 typedef struct ADPdata{
-  unsigned long ADPtime;
   unsigned long ADPtimestamp; // Added local timestamp
+  unsigned long ADPtime;
   float P_dyn;
   float P_static;
 };
 
 typedef struct THRUSTdata{
-  unsigned long THRtime;
   unsigned long THRtimestamp; // Added local timestamp
+  unsigned long THRtime;
   float temp1;
   float temp2;
   float force1;

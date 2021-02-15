@@ -35,9 +35,9 @@
 #define MSG_SEM_NAME "/msgsem"
 
 typedef struct STRAPdata{
+  unsigned long STRAPtimestamp;
   unsigned long IMUtime;
   unsigned long IMUtime_old;
-  unsigned long STRAPtimestamp;
   float roll;
   float pitch;
   float yaw;
