@@ -46,12 +46,14 @@ using namespace std;
 
 typedef struct IMUdata{
   unsigned long IMUtime;
+  unsigned long IMUtimestamp; // local raspberry timestamp
   float variables[6];
 };
 
 typedef struct STRAPdata{
   unsigned long IMUtime;
   unsigned long IMUtime_old;
+  unsigned long STRAPtimestamp; // local raspberry timestamp
   float roll;
   float pitch;
   float yaw;

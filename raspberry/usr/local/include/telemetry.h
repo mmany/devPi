@@ -101,12 +101,14 @@ const string PERSIST_DIR { "data-persist" };
 
 typedef struct IMUdata{
   unsigned long IMUtime;
+  unsigned long IMUtimestamp; // arrival timestamp
   float variables[6];
 };
 
 typedef struct STRAPdata{
   unsigned long IMUtime;
   unsigned long IMUtime_old;
+  unsigned long STRAPtimestamp; // added timestamp on arrival
   float roll;
   float pitch;
   float yaw;
@@ -167,6 +169,7 @@ typedef struct GPSdata{ // see ublox NAV-PVT message, for data explenation
 #define NANO_PPM_CHANNELS 13
 typedef struct NANOdata{
   unsigned long NANOtime;
+  unsigned long NANOtimestamp; // added local timestamp
   float vdot;
   float vges;
   short int channelvalue[NANO_PPM_CHANNELS];
@@ -174,18 +177,21 @@ typedef struct NANOdata{
 
 typedef struct ADPdata{
   unsigned long ADPtime;
+  unsigned long ADPtimestamp; // Added local timestamp
   float P_dyn;
   float P_static;
 };
 
 typedef struct THRUSTdata{
   unsigned long THRtime;
+  unsigned long THRtimestamp; // Added local timestamp
   float temp1;
   float temp2;
   float force1;
   float force2;
   unsigned long raw1;
   unsigned long raw2;
+  unsigned long THRdata;
 };
 
 bool processbool = true;

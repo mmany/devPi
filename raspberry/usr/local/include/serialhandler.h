@@ -91,6 +91,7 @@ using namespace std::chrono;
 // structs for incoming data
 typedef struct IMUdata{
   unsigned long IMUtime;
+  unsigned long IMUtimestamp; // raspberry timestamp
   float variables[6];
 };
 
@@ -144,6 +145,7 @@ typedef struct GPSdata{ // see ublox NAV-PVT message, for data explenation
 
 typedef struct NANOdata{
   unsigned long NANOtime;
+  unsigned long NANOtimestamp; // Added timestamp of arrival
   float vdot;
   float vges;
   short int channelvalue[NANO_PPM_CHANNELS];
@@ -151,18 +153,21 @@ typedef struct NANOdata{
 
 typedef struct ADPdata{
   unsigned long ADPtime;
+  unsigned long ADPtimestamp; // Added timestamp of arrival
   float P_dyn;
   float P_static;
 };
 
 typedef struct THRUSTdata{
   unsigned long THRtime;
+  unsigned long THRtimestamp; // Added timestamp of arrival
   float temp1;
   float temp2;
   float force1;
   float force2;
   unsigned long raw1;
   unsigned long raw2;
+
 };
 
 // translation of binary data to float data

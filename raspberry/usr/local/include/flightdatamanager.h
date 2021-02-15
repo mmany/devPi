@@ -37,6 +37,7 @@
 typedef struct STRAPdata{
   unsigned long IMUtime;
   unsigned long IMUtime_old;
+  unsigned long STRAPtimestamp;
   float roll;
   float pitch;
   float yaw;
