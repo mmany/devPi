@@ -1,0 +1,3 @@
+# We want HISTORY.txt (which is the file changelog symlinks to) uncompressed, so
+# that source for HISTORY.html is easily viewable within a browser.
+docutils-doc: changelog-file-not-compressed changelog
